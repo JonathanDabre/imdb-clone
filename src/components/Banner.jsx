@@ -1,9 +1,14 @@
-import { Box } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import React from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-const Banner = () => {
+
+const StyleBanner = styled('img')({
+    width:'100%'
+})
+// Doing destructuring at props area itself.
+const Banner = ({movies}) => {
 
     const responsive = {
         superLargeDesktop: {
@@ -26,11 +31,21 @@ const Banner = () => {
       };
 
   return (
-    <Box>
+    <Box  style={{width:"65%"}}>
         <Carousel
             responsive={responsive}
+            swipeable={false}
+            draggable={false}
+            autoPlay={true}
+            infinite={true}
+            autoPlaySpeed={3000}
+            keyBoardControl={true}
         >
-
+            {
+                movies.map(movie =>(
+                        <StyleBanner src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt='movie-banner'/>    
+                ))
+            }
         </Carousel>
     </Box>
   )

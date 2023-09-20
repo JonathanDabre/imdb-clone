@@ -13,7 +13,7 @@ const Home = () => {
 
     const getData = async ()=>{
      let response = await categoryMovies(NOWPLAYING_API_URL)
-     setMovies();
+     setMovies(response.results);
     }
 
     getData();
@@ -24,7 +24,7 @@ const Home = () => {
     <>
         <Header/>
         <Box>
-          <Banner/>
+          <Banner movies= {movies}/>
         </Box>
     </>
   )
